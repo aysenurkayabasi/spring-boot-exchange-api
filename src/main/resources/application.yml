@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: exchange
+  datasource:
+    url: jdbc:h2:mem:exchangehistory
+    username: superuser
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console.enabled: true
+  cache:
+    type: caffeine
+
+currency-client:
+  api-key: 251d3ba3174184a42770b72e6bef47bb
+  url: https://api.currencylayer.com
+
+
+logging:
+  level:
+    root: INFO
+
+  file:
+    name: logs/app.log
+  pattern:
+    file: '%d %p %c{1.} [%t] %m%n'
+    console: '%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n'
+
